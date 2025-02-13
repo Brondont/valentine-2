@@ -2,7 +2,7 @@
 let counterInterval;
 
 function updateCounter() {
-  const startDate = new Date("2020-01-01T00:00:00");
+  const startDate = new Date("2023-11-22T13:19:26");
   const now = new Date();
 
   let years = now.getFullYear() - startDate.getFullYear();
@@ -281,7 +281,7 @@ const loadEnd = () => {
   content.addEventListener("animationend", () => {
     const mainContent = document.getElementById("main-content");
     mainContent.innerHTML = `
-      <div class="end-message">I ask, Will You Be My Valentine?</div>
+      <div class="end-message">Thank you for taking the time to read all those. I ask, Will You Be My Valentine?</div>
       <img src="src/bug-worried.gif" alt="worried" class="end-gif"/>
 
       <div class="button-container">

@@ -1,0 +1,545 @@
+/* index.css - Modern CSS Reset */
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  font-size: 16px;
+  cursor: url("src/normal-gojo.png"), auto;
+  line-height: 1.5;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeSpeed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  text-align: center;
+}
+
+body {
+  font-family: "Dancing Script", cursive;
+  color: #333;
+  background-color: #fcdde8;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button:hover {
+  cursor: url("src/hover-gojo.png"), auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+.fade-in {
+  opacity: 0;
+  font-size: 4em;
+  margin-bottom: 20px;
+  animation: fadeIn 3s ease forwards;
+  position: relative;
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.counter {
+  font-size: 1.5em;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.time-box {
+  width: 70px;
+  height: 100px;
+  background-color: #4f46e5;
+  color: #fff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.time-box:hover {
+  cursor: url("./src/hover-gojo.png"), auto;
+}
+
+.number {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.label {
+  font-size: 1rem;
+  margin-top: 5px;
+}
+
+.styled-button {
+  padding: 20px;
+  background-color: #4f46e5;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.styled-button:hover {
+  transform: translateY(-5px);
+  cursor: url("./src/hover-gojo.png"), auto;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+.styled-button:active {
+  transform: translateY(2px);
+}
+
+/* Fade Out Animation */
+.fade-out {
+  animation: fadeOut 2s ease forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+:root {
+  --envelope-x: 300px;
+  --envelope-y: 200px;
+  --envelope-bg: #6a5acd;
+  --envelope-shadow: #3b348c;
+  --letter-x: 250px;
+  --letter-y: calc(250px - 1rem - 10px);
+  --letter-bg: white;
+  --letter-shadow: #837bc1;
+  --letter-text: #1d1135;
+  --letter-font: "Dancing Script", serif;
+  --letter-button-text: #4f46e5;
+  --heart-bg: #4f46e5;
+  --heart-text: white;
+}
+
+@media (min-width: 650px) {
+  :root {
+    --envelope-x: 600px;
+    --envelope-y: 400px;
+    --letter-x: 500px;
+    --letter-y: calc(400px - 1rem - 10px);
+  }
+}
+
+.cssletter {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  -webkit-user-select: none;
+  margin: 24dvh 0;
+}
+
+.envelope {
+  position: relative;
+  width: var(--envelope-x);
+  height: var(--envelope-y);
+  background: var(--envelope-bg);
+  box-shadow: inset 0 0 30px -5px var(--envelope-shadow), 0 0 50vw 0 #4f46e5;
+}
+
+.envelope::before {
+  content: "˚ʚ❤︎ɞ˚";
+  font-size: 5rem;
+  color: white;
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: soft-light;
+}
+
+.envelope-flap {
+  width: 100%;
+  height: 71%;
+  position: absolute;
+  top: 0;
+  z-index: 3;
+  overflow: hidden;
+  transition: 0.6s linear all;
+  transform-origin: top;
+  pointer-events: all;
+}
+
+.envelope-folds {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.envelope-flap::before,
+.envelope-left::before,
+.envelope-right::before,
+.envelope-bottom::before {
+  content: "";
+  transform: rotate(45deg);
+  background: var(--envelope-bg);
+  box-shadow: 0 0 30px -5px var(--envelope-shadow);
+  width: 100%;
+  aspect-ratio: 1;
+  display: block;
+  position: absolute;
+  top: 60%;
+}
+
+.envelope-flap::before {
+  border-radius: 5rem;
+  bottom: 30px;
+  border-radius: 5rem;
+  top: auto;
+}
+
+@media (min-width: 650px) {
+  .envelope-flap::before {
+    bottom: 100px;
+  }
+}
+
+.envelope-left::before {
+  top: 10%;
+  left: -65%;
+}
+
+.envelope-right::before {
+  top: 10%;
+  right: -65%;
+}
+
+.envelope-bottom::before {
+  top: 60%;
+  border-radius: 5rem;
+}
+
+.heart {
+  z-index: 4;
+  position: relative;
+  box-shadow: none;
+  border: none;
+  width: 70px;
+  aspect-ratio: 1;
+  background: radial-gradient(circle at 60% 65%, var(--heart-bg) 64%, #0000 65%)
+      top left/50% 50%,
+    radial-gradient(circle at 40% 65%, var(--heart-bg) 64%, #0000 65%) top
+      right/50% 50%,
+    conic-gradient(from -45deg at 50% 85.5%, var(--heart-bg) 90deg, #0000 0)
+      bottom/100% 50%;
+  background-repeat: no-repeat;
+  left: 13%;
+  top: 70%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+@media (min-width: 650px) {
+  .heart {
+    width: 150px;
+  }
+}
+
+.heart::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 70px;
+  aspect-ratio: 1;
+  background: radial-gradient(circle at 60% 65%, #ffffff26 64%, #0000 65%) top
+      left/50% 50%,
+    radial-gradient(circle at 40% 65%, #ffffff26 64%, #0000 65%) top right/50%
+      50%,
+    conic-gradient(from -45deg at 50% 85.5%, #ffffff26 90deg, #0000 0)
+      bottom/100% 50%;
+  background-repeat: no-repeat;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 0.3s ease all;
+  z-index: -1;
+}
+
+@media (min-width: 650px) {
+  .heart::before {
+    width: 150px;
+  }
+}
+
+.heart:hover,
+.heart:active,
+.heart:focus {
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+  cursor: url("./src/hover-gojo.png"), auto;
+  color: var(--heart-text);
+}
+
+.heart:hover::before,
+.heart:active::before,
+.heart:focus::before {
+  transform: translate(-50%, -50%) scale(0.8);
+}
+
+.heart-text {
+  transform: translateY(-10px);
+  display: block;
+  color: var(--heart-text);
+  font-size: 1.5rem;
+  font-family: var(--letter-font);
+}
+
+.envelope.active * {
+  pointer-events: none;
+}
+
+.envelope.active .envelope-flap {
+  transform: rotateX(-180deg) translateY(0);
+  perspective: 10px;
+}
+
+.envelope.active .envelope-flap::before {
+  box-shadow: inset 0 0 30px -5px var(--envelope-shadow);
+}
+
+.envelope.active .heart {
+  display: none;
+}
+
+.letter {
+  box-sizing: border-box;
+  font-family: var(--letter-font);
+  font-size: 2rem;
+  line-height: 1.1;
+  background-color: var(--letter-bg);
+  color: var(--letter-text);
+  width: var(--letter-x);
+  height: var(--letter-y);
+  user-select: none;
+  box-shadow: inset 0 0 20px -5px var(--letter-shadow);
+  padding: 3rem 1rem 1rem;
+  margin: 0;
+  cursor: grab;
+  cursor: url("./src/hover-gojo.png"), auto;
+  position: absolute;
+  top: 1rem;
+  overflow: auto;
+  text-align: center;
+  border: 0;
+}
+
+.letter:active {
+  cursor: url("./src/hover-gojo.png"), auto;
+}
+
+.letter.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.letter cite {
+  font-size: 1.25rem;
+  color: var(--letter-text);
+  margin-top: 1rem;
+}
+
+.letter cite::before {
+  content: none;
+}
+
+.letter:nth-child(even) {
+  transform: skew(-2deg) translateY(-4px);
+}
+
+.letter:nth-child(odd) {
+  transform: skew(2deg) translateY(4px);
+}
+
+@media (min-width: 650px) {
+  .letter {
+    font-size: 1.3rem;
+  }
+}
+
+.closeLetter {
+  font-size: 0 !important;
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  border: 0;
+}
+
+.closeLetter::before {
+  content: "˚ʚ❤︎ɞ˚";
+  font-size: 1.5rem !important;
+  font-family: var(--letter-font);
+  color: var(--letter-button-text);
+  text-align: center;
+}
+
+.closeLetter:hover,
+.closeLetter:active,
+.closeLetter:focus {
+  background-color: transparent;
+  color: var(--letter-text);
+  cursor: url("./src/normal-gojo.png"), auto;
+  transform: translateX(-50%);
+  padding: 0;
+  margin: 0;
+}
+
+.closeLetter:hover::before,
+.closeLetter:active::before,
+.closeLetter:focus::before {
+  content: "xXx";
+}
+
+/* Volume Button Styles */
+.volume-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #4f46e5;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  z-index: 1000;
+}
+
+.volume-btn:hover {
+  cursor: url("./src/hover-gojo.png"), auto;
+  transform: scale(1.1);
+}
+
+.volume-btn:active {
+  transform: scale(0.95);
+}
+
+.end-message {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #4f46e5;
+}
+
+.end-gif {
+  width: 150px;
+  margin: 20px 0;
+}
+
+.button-container {
+  display: flex;
+  gap: 20px;
+  position: relative;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.yes-btn,
+.no-btn {
+  padding: 15px 30px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.yes-btn {
+  background-color: #4f46e5;
+  color: #fff;
+}
+
+.no-btn {
+  background-color: #f44336;
+  color: #fff;
+  position: fixed;
+  transition: left 0.3s, top 0.3s; /* Smooth movement */
+  white-space: nowrap;
+}
